@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title th:text="${customer.name}"></title>
+</head>
+<body>
+<!-- /* Content of this page will be decorated by the elements of layout.html (task/layout) */ -->
+<div layout:fragment="content">
+    <div>
+        <h1 th:text="${customer.name}"></h1>
+    </div>
+
+    <div>
+        <dl class="row">
+            <dt class="col-sm-3">Adres</dt>
+            <dd class="col-sm-9" th:text="${customer.streetName} + ' ' + ${customer.houseNumber}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-3">Postcode</dt>
+            <dd class="col-sm-9" th:text="${customer.postalCode} + ' ' + ${customer.city}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-3">Telefoon</dt>
+            <dd class="col-sm-9" th:text="${customer.phoneNumber}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-3">E-mail</dt>
+            <dd class="col-sm-9" th:text="${customer.email}"></dd>
+        </dl>
+    </div>
+
+    <div>
+        <div class="section--title">
+            <h3>Machines</h3>
+        </div>
+        <div class="section--controls bg-light">
+            <nav class="nav nav-pills nav-fill justify-content-end">
+                <a class="nav-link" aria-current="page" th:href="@{/machines/create(customerId=${customer.id})}">Nieuwe machine</a>
+            </nav>
+        </div>
+        <div class="section--content">
+            <div th:if="${customer.machines.empty}">
+                <span>Van deze klant zijn geen machines geregistreerd.</span>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item" th:each="machine : ${customer.machines}">
+                    <span th:text="${machine.reference}"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

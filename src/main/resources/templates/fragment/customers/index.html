@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Klanten</title>
+</head>
+<body>
+<!-- /* Content of this page will be decorated by the elements of layout.html (task/layout) */ -->
+<div layout:fragment="content">
+    <div>
+        <h1>Klanten</h1>
+    </div>
+    <div>
+        <div th:if="${customers.empty}">
+            <span>Nog geen klanten ingevoerd.</span>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item" th:each="customer : ${customers}">
+                <a th:text="${customer.name}" th:href="@{/customers/{customerId}(customerId=${customer.id})}">Customer</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--@{/userLogin/{userId}(userId=${user.userId})}-->
+</body>
+</html>

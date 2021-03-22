@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Machines</title>
+</head>
+<body>
+<!-- /* Content of this page will be decorated by the elements of layout.html (task/layout) */ -->
+<div layout:fragment="content">
+    <div>
+        <h1>Machines</h1>
+    </div>
+    <div>
+        <div th:if="${machines.empty}">
+            <span>Nog geen machines ingevoerd.</span>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item" th:each="machine : ${machines}">
+                <span th:if="${machine.reference != null AND !machine.reference.empty}" th:text="${machine.reference}"></span>
+                <span th:if="${machine.reference == null OR machine.reference.empty}" th:text="${machine.serialNumber}"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

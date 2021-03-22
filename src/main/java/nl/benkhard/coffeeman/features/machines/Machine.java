@@ -1,16 +1,18 @@
-package nl.benkhard.coffeeman.features.machine;
+package nl.benkhard.coffeeman.features.machines;
 
-import nl.benkhard.coffeeman.features.customer.Customer;
+import lombok.Data;
+import nl.benkhard.coffeeman.features.customers.Customer;
 
 import javax.persistence.*;
 
 @Entity
+@Data
 public class Machine {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-
+    private String reference;
     private String serialNumber;
     private String brand;
     private String type;

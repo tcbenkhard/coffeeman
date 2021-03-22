@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Nieuwe machine</title>
+</head>
+<body>
+<!-- /* Content of this page will be decorated by the elements of layout.html (task/layout) */ -->
+<div layout:fragment="content">
+    <div>
+        <h1>Nieuwe machine</h1>
+    </div>
+    <div>
+        <form method="POST" action="/machines" modelAttribute="machine">
+
+<!--private String reference;
+    private String serialNumber;
+    private String brand;
+    private String type;-->
+            <div class="form-group row">
+                <label for="customerName" class="col-sm-2 col-form-label">Klant</label>
+                <div class="col-sm-10">
+                    <input type="text" disabled class="form-control" id="customerName" th:value="${customer.name}">
+                </div>
+            </div>
+            <input type="hidden" class="form-control" path="owner" th:value="${customer.id}" name="owner" id="owner">
+
+            <div class="form-group row">
+                <label for="reference" class="col-sm-2 col-form-label">Referentie</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" path="reference" name="reference" id="reference" placeholder="BR200012">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="serialNumber" class="col-sm-2 col-form-label">Serienummer</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" path="serialNumber" name="serialNumber" id="serialNumber" placeholder="SN00000000000012">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="brand" class="col-sm-2 col-form-label">Merk</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" path="brand" name="brand" id="brand" placeholder="Simon Levelt">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="type" class="col-sm-2 col-form-label">Type</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" path="type" name="type" id="type" placeholder="AB-123 Super">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Opslaan</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
